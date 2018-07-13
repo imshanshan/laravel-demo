@@ -13469,7 +13469,6 @@ a.text-dark:focus {
 html {
   position: relative;
   min-height: 100%;
-  background-color: #f06665;
 }
 
 body {
@@ -13482,6 +13481,11 @@ body {
   border-top: 4px solid #f06665;
   margin-bottom: 40px;
   margin-top: 0;
+}
+
+.form-group .img-captcha {
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .easyedu-navbar .easyedu-nav-right .dropdown-menu {
