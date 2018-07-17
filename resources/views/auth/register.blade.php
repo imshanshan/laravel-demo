@@ -65,7 +65,7 @@
                                 class="col-md-4 col-form-label text-md-right">验&ensp;证&ensp;码</label>
                             <div class="col-md-6">
                             <input id="captcha" type="text" class="form-control{{ $errors->has('captcha') ? ' is-invalid' : '' }}"
-                                    name="captcha">
+                                    name="captcha"><?php dd(captcha_src('flat')) ?>
                             <img class="img-thumbnail img-captcha" src="{{ captcha_src('flat') }}"
                                 onclick="this.src='/captcha/flat?'+Math.random()" title="点击图片重新获取验证码">
                             @if ($errors->has('captcha'))

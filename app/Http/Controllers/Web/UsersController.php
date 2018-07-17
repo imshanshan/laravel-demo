@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\UserFormRequest;
+use App\Handlers\ImageHandler;
 
 class UsersController extends Controller
 {
@@ -14,6 +15,7 @@ class UsersController extends Controller
      * 
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\User         $user
+     * @param \App\Handlers\ImageHandler             $handler
      * 
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -48,12 +50,15 @@ class UsersController extends Controller
      * 
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(UserFormRequest $request, User $user)
+    public function update(UserFormRequest $request, User $user, ImageHandler $handler)
     {
         $data = $request->all();
 
         if ($request->avatar) {
-            // todo 
+            $result = $handler->upload($request->avatar, 'avatars', $user->id, 365);
+            if ($result) {
+                $data['avatar'] = $result['path'];
+            }
         }
 
         $user->update($data);
