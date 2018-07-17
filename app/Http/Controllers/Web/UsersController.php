@@ -11,6 +11,14 @@ use App\Handlers\ImageHandler;
 class UsersController extends Controller
 {
     /**
+     * return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show']]);
+    }
+
+    /**
      * 用户详情页
      * 
      * @param \Illuminate\Http\Request $request
@@ -37,6 +45,7 @@ class UsersController extends Controller
      */
     public function edit(Request $request, User $user)
     {
+        $this->authorize('update', $user);
         return view('web.users.edit', compact('user'));
     }
 
@@ -52,6 +61,7 @@ class UsersController extends Controller
      */
     public function update(UserFormRequest $request, User $user, ImageHandler $handler)
     {
+        $this->authorize('update', $user);
         $data = $request->all();
 
         if ($request->avatar) {
