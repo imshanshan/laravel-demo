@@ -9,7 +9,8 @@ class ImageHandler
      *
      * @var array
      */
-    protected static $allowedExt = ["png", "jpg", "gif", 'jpeg'];
+    protected static $allowedExt = ['png', 'jpg', 'gif', 'jpeg'];
+    
     /**
      * 上传图片。
      *
@@ -35,6 +36,7 @@ class ImageHandler
             'path' => config('app.url') . "/$folder/$filename",
         ];
     }
+    
     /**
      * 缩小尺寸。
      *
@@ -52,4 +54,5 @@ class ImageHandler
         });
         $image->save();
     }
+    
 }

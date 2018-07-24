@@ -35,7 +35,7 @@ class SeedCategoriesData extends Migration
                 'description' => '我们不应该像蚂蚁，单只收集；也不可像蜘蛛，只从自己肚中抽丝；而应该像蜜蜂，既采集又整理，这样才能酿出香甜蜂蜜来。',
             ],
         ];
-        $categories = array_map(function (& $value) use ($now) {
+        $categories = array_map(function (&$value) use ($now) {
 
             return $value;
         }, $categories);
