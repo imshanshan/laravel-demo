@@ -17,20 +17,13 @@ class UsersTableSeeder extends Seeder
         $faker = app(Generator::class);
     
         $avatars = [
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/aemooT8dae1Cobu.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/Aiqueeyov7aiFaiy.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/ga2zaiZ6tuo8eife.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/aecah3Eo1shahchu.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/Cae8ro9Reequae2x.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/Eiyoo9ohthie9ahl.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/DeiH5uo6ooTahRat.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/oa0taiPhaeGhu7xi.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/Tooz8meeha6gooVu.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/phei9uceey1OhM7d.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/Oorooyealai9dobo.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/miegoh5Aibe4quai.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/theXathiiseith6u.jpg',
-            'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/chee8oBea2Bahw2y.jpg',
+            'http://pcnu7fo5y.bkt.clouddn.com/image/jpg/070a883430a87b3fe05bebb3ca09e9c6.jpg',
+            'http://pcnu7fo5y.bkt.clouddn.com/image/jpg/41126cee32b475bd650dbb61dabd9b72.jpg',
+            'http://pcnu7fo5y.bkt.clouddn.com/image/jpg/44416a64a6c67a29698bb81b3449249d.jpg',
+            'http://pcnu7fo5y.bkt.clouddn.com/image/jpg/4e578df0fb45611137f54c4461f4c3e4.jpg',
+            'http://pcnu7fo5y.bkt.clouddn.com/image/jpg/791b05615d2a56f71023662b4ac04940.jpg',
+            'http://pcnu7fo5y.bkt.clouddn.com/image/jpg/b4e9e404b4adccbd359a6f58d2845d32.jpg',
+            'http://pcnu7fo5y.bkt.clouddn.com/image/jpg/e4b01c990c0e8afc6360ba31215c0624.jpg'
         ];
     
         $factory = factory(User::class)
@@ -50,7 +43,7 @@ class UsersTableSeeder extends Seeder
         $user = User::find(1);
         $user->name = 'Laravel Framework';
         $user->email = 'laravel@gmail.com';
-        $user->avatar = 'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/Ji3ohCho5Quov5UL.jpg';
+        $user->avatar = 'http://pcnu7fo5y.bkt.clouddn.com/image/jpg/ecb2fe5baff0a9e0674a9e7c353fed7f.jpg';
         $user->save();
         
     }
