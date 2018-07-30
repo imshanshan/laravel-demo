@@ -28,8 +28,10 @@ class TopicsController extends Controller
      * Date: 2018/7/24 21:20
      */
     public function index(Request $request, Topic $topic)
-    {
-        return view('web.topics.index', compact('topic'));
+    {   
+        $topics = $topic->withOrder($request->order)->paginate(20);
+        //$topics = $topic->paginate(20);
+        return view('web.topics.index', compact('topics'));
     }
     
     /**
