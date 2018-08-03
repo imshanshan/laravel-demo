@@ -43,6 +43,7 @@
             </ul>
           </div>
         </div>
+        @include('web.users._topics', ['topics' => $user->topics()->withOrder('recent')->paginate(5)])
       </div>
     </div>
   </div>
