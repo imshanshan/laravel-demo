@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Topic;
 use App\Models\Category;
+use App\Http\Requests\Web\TopicFormRequest;
 
 class TopicsController extends Controller
 {
@@ -76,7 +77,13 @@ class TopicsController extends Controller
      */
     public function store(TopicFormRequest $request, Topic $topic)
     {
-    
+        $topic->fill($request->all());
+        $topic->user_id = Auth:: id();
+        $topic->save();
+        
+        return redirect()
+            ->to($topic->link())
+            ->with(['message' => '话题创建成功']);
     }
     
     /**
