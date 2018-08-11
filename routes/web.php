@@ -33,5 +33,6 @@ Route::group(['namespace' => 'Web'], function(){
     
     //用户话题
     Route::resource('topics', 'TopicsController');
+    Route::post('upload', 'TopicsController@upload')->name('topics.upload');
     
 });
