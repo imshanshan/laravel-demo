@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Topic;
 use App\Models\Category;
 use App\Http\Requests\Web\TopicFormRequest;
+use App\Handlers\ImageHandler;
+use Illuminate\Support\Facades\Auth;
 
 class TopicsController extends Controller
 {
@@ -78,7 +80,7 @@ class TopicsController extends Controller
     public function store(TopicFormRequest $request, Topic $topic)
     {
         $topic->fill($request->all());
-        $topic->user_id = Auth:: id();
+        $topic->user_id = Auth::id();
         $topic->save();
         
         return redirect()
@@ -123,6 +125,35 @@ class TopicsController extends Controller
     public function destroy(Topic $topic)
     {
     
+    }
+    
+    /**
+     * 上传话题图片
+     * Created by PhpStorm
+     * author: sunshanshan
+     * return:
+     * Date: 2018/8/11 22:19
+     */
+    public function upload(Request $request, ImageHandler $handler)
+    {
+        $data = [
+            'status' => false,
+            'msg'=>'上传失败！',
+            'path'=>'',
+        ];
+        
+        
+        if ($file = $request->uploader) {
+            $result = $handler->upload($request->uploader, 'topics', Auth::id(), 1024);
+          
+            if ($result) {
+                $data['status'] = true;
+                $data['msg'] = '上传成功！';
+                $data['path'] = $result['path'];
+            }
+        }
+        
+        return $data;
     }
     
 }
