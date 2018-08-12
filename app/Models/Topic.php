@@ -34,6 +34,18 @@ class Topic extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    
+    /**
+     * 回复
+     * Created by PhpStorm
+     * author: sunshanshan
+     * return:
+     * Date: 2018/8/12 09:26
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 
     /**
      * 话题排序
