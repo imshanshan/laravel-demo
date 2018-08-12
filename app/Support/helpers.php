@@ -10,4 +10,17 @@ if (! function_exists('route_class')) {
         return str_replace('.', '-', \Route::currentRouteName());
     }
 }
+
+if (! function_exists('make_excerpt')) {
+    
+    /**
+     * 根据给定的内容生成摘要
+     */
+    function make_excerpt($text, $length = 200)
+    {
+        $excerpt = trim(preg_replace('/\r\n|\r|\n+/', ' ', strip_tags($text)));
+        
+        return str_limit($excerpt, $length);
+    }
+}
 ?>
