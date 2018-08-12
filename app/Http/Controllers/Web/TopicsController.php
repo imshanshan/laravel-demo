@@ -86,7 +86,7 @@ class TopicsController extends Controller
         
         return redirect()
             ->to($topic->link())
-            ->with(['message' => '话题创建成功']);
+            ->with(['success' => '话题创建成功']);
     }
     
     /**
@@ -134,7 +134,7 @@ class TopicsController extends Controller
     
         return redirect()
             ->to($topic->link())
-            ->with(['message'=>'话题更新成功！']);
+            ->with(['success'=>'话题更新成功！']);
     }
     
     /**
@@ -147,7 +147,17 @@ class TopicsController extends Controller
      */
     public function destroy(Topic $topic)
     {
-    
+        try {
+            $this->authorize('destroy', $topic);
+        } catch (AuthorizationException $e){
+        
+        }
+        
+        $topic->delete();
+        
+        return redirect()
+            ->route('topics.index')
+            ->with(['success' => '删除话题成功']);
     }
     
     /**

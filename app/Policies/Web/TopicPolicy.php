@@ -21,4 +21,9 @@ class TopicPolicy extends Policy
     {
         return $user->isAuthor($topic);
     }
+    
+    public function destory(User $user, Topic $topic)
+    {
+        return $user->isAuthor($topic);
+    }
 }
