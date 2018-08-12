@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Http\Requests\Web\TopicFormRequest;
 use App\Handlers\ImageHandler;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class TopicsController extends Controller
 {
@@ -97,7 +98,18 @@ class TopicsController extends Controller
      */
     public function edit(Topic $topic)
     {
-        return view('web.topics.topic');
+        try {
+            $this->authorize('update', $topic);
+        } catch (AuthorizationException $e){
+        
+        }
+        
+        $categories = category::all();
+        
+        return view('web.topics.topic', compact(
+            'topic',
+            'categories'
+        ));
     }
     
     /**
@@ -111,7 +123,18 @@ class TopicsController extends Controller
      */
     public function update(TopicFormRequest $request, Topic $topic)
     {
+        try {
+            $this->authorize('update', $topic);
+        } catch (AuthorizationException $e){
+        
+        }
     
+        $topic->update($request->all());
+        
+    
+        return redirect()
+            ->to($topic->link())
+            ->with(['message'=>'话题更新成功！']);
     }
     
     /**
@@ -138,8 +161,8 @@ class TopicsController extends Controller
     {
         $data = [
             'status' => false,
-            'msg'=>'上传失败！',
-            'path'=>'',
+            'msg'    =>'上传失败！',
+            'path'   =>'',
         ];
         
         

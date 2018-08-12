@@ -42,4 +42,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Topic::class);
     }
+    
+    /**
+     * 判断是否为原作者
+     * Created by PhpStorm
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * author: sunshanshan
+     * return:
+     * Date: 2018/8/12 12:18
+     */
+    public function isAuthor(\Illuminate\Database\Eloquent\Model $model)
+    {
+        return $this->id == $model->user_id;
+    }
 }
